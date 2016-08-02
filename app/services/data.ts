@@ -14,6 +14,7 @@ export class DataService {
     private DB_NAME: string = 'kidsToken.db';
     private KIDS_KEY: string = 'kids';
     private LOCATION_KEY: string = 'location';
+    private Kids: any = [];
 
     constructor(
         private http: Http,
@@ -38,12 +39,43 @@ export class DataService {
         });
     }
 
+    addKid(data: any): void {
+        let newkid: any;
+        newkid = {
+            name: 'Mohammed',
+            token: 'start'
+        };
+        this.Kids.push(newkid);
+        this.saveData(this.Kids, this.KIDS_KEY);
+    }
+
     getKids(): Promise<any> {
-        if (this.platform.is('cordova')) {
-            return this.storage.get(this.KIDS_KEY);
-        } else {
-            return Promise.resolve(JSON.stringify({}));
-        }
+        let oKids: any;
+        return new Promise(resolve => {
+            // this.http.get(WEB_API_URL + 'Partner/GetAll')
+            //     .map(result => result.json())
+            //     .subscribe(data => {
+            //         resolve(data)
+            //     })
+
+              this.Kids = this.storage.get(this.KIDS_KEY).then((value) => {
+  console.log(value );
+  oKids = JSON.parse(value);
+  this.Kids = oKids;
+  
+   resolve(this.Kids);
+});
+
+        })
+
+
+
+        
+        
+         
+
+           
+       
     }
 
     setProfile(data: any): void {

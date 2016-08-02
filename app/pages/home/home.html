@@ -2,16 +2,21 @@
   <ion-navbar>
     <ion-title>Kids Tokens</ion-title>
   </ion-navbar>
+ 
 </ion-header>
 
+
+
 <ion-content padding class="home">
-  <button fab primary fab-bottom fab-right>
-    <ion-icon name="add"></ion-icon>
-  </button>
+  
   <h2>Welcome to Kids Tokens!</h2>
   <ion-list>
     <ion-item *ngFor="let item of items" (click)="itemSelected(item)">
-      {{item.title}}
+      {{item.name}}\{{item.token}}
     </ion-item>
   </ion-list>
+  <button fab primary fab-bottom fab-right>
+    <ion-icon name="add"></ion-icon>
+  </button>
 </ion-content>
+ 
