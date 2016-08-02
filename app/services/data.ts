@@ -1,8 +1,18 @@
-import { Injectable }                    from '@angular/core';
-import { Http }                          from '@angular/http';
+import {
+    Injectable
+} from '@angular/core';
+import {
+    Http
+} from '@angular/http';
 
-import { Platform, SqlStorage, Storage } from 'ionic-angular';
-import { Observable }                    from 'rxjs/Observable';
+import {
+    Platform,
+    SqlStorage,
+    Storage
+} from 'ionic-angular';
+import {
+    Observable
+} from 'rxjs/Observable';
 
 
 import 'rxjs/Rx';
@@ -39,50 +49,39 @@ export class DataService {
         });
     }
 
-    addKid(data: any): void {
-        let newkid: any;
-        newkid = {
-            name: 'Mohammed',
-            token: 'start'
-        };
-        this.Kids.push(newkid);
+   
+
+    addKid(data: any): Promise < any > {
+        let oKids: any;
+        return new Promise((resolve, reject) => {
+            this.Kids.push(data);
         this.saveData(this.Kids, this.KIDS_KEY);
+        resolve('Done');
+
+        }).catch((error) => {
+                       // reject('Only available on a device');
+                    });
     }
 
-    getKids(): Promise<any> {
+    getKids(): Promise < any > {
         let oKids: any;
         return new Promise(resolve => {
-            // this.http.get(WEB_API_URL + 'Partner/GetAll')
-            //     .map(result => result.json())
-            //     .subscribe(data => {
-            //         resolve(data)
-            //     })
+            this.Kids = this.storage.get(this.KIDS_KEY).then((value) => {
+                console.log(value);
+                oKids = JSON.parse(value);
+                this.Kids = oKids;
 
-              this.Kids = this.storage.get(this.KIDS_KEY).then((value) => {
-  console.log(value );
-  oKids = JSON.parse(value);
-  this.Kids = oKids;
-  
-   resolve(this.Kids);
-});
+                resolve(this.Kids);
+            });
 
-        })
-
-
-
-        
-        
-         
-
-           
-       
+        });
     }
 
     setProfile(data: any): void {
         this.saveData(data, this.KIDS_KEY);
     }
 
-    getLocation(): Promise<any> {
+    getLocation(): Promise < any > {
         return this.storage.get(this.LOCATION_KEY);
     }
 
