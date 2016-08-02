@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-navbar primary>
+        <ion-title>
+            New Kid
+        </ion-title>
+        <ion-buttons end>
+            <button (click)="close()"><ion-icon name="close"></ion-icon></button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+<ion-list>
+
+    <ion-item>
+        <ion-label fixed>Name</ion-label>
+        <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label fixed>Token</ion-label>
+        <ion-input type="text"></ion-input>
+    </ion-item>
+
+</ion-list>
+
+<div padding>
+    <button primary block (click)="addKid()">Add</button>
+</div>
+</ion-content>
