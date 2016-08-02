@@ -9,21 +9,23 @@
     </ion-navbar>
 </ion-header>
 <ion-content>
+    <form (submit)="processForm()" [ngFormModel]="form">
 <ion-list>
 
     <ion-item>
         <ion-label fixed>Name</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input ngControl="firstName" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
         <ion-label fixed>Token</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input ngControl="token" type="text"></ion-input>
     </ion-item>
 
 </ion-list>
 
 <div padding>
-    <button primary block (click)="addKid()">Add</button>
+    <button primary block type="submit">Add</button>
 </div>
+</form>
 </ion-content>
