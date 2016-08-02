@@ -46,7 +46,10 @@ export class AddKidModal {
     });
 
     if (this.form.status === 'VALID') {
-      this.nav.present(alert);
+      this.nav.present(alert).then(() => {
+        this.close();
+         });
+      
     }
            
           });
