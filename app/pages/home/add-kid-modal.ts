@@ -24,8 +24,12 @@ export class AddKidModal {
       tokenType: new Control('', Validators.required),
       tokenNumbers: new Control('', Validators.required)
     });
+   
        
     }
+    
+    
+
 
     close() {
         this.viewController.dismiss();
