@@ -17,6 +17,8 @@ import {
 
 import 'rxjs/Rx';
 
+import { Child }                       from '../models/child';
+
 @Injectable()
 export class DataService {
     storage: Storage;
@@ -51,7 +53,7 @@ export class DataService {
 
    
 
-    addKid(data: any): Promise < any > {
+    addKid(data: Child): Promise < any > {
         let oKids: any;
         return new Promise((resolve, reject) => {
             this.Kids.push(data);
@@ -67,11 +69,12 @@ export class DataService {
         let oKids: any;
         return new Promise(resolve => {
             this.Kids = this.storage.get(this.KIDS_KEY).then((value) => {
+                if (value) {
                 console.log(value);
                 oKids = JSON.parse(value);
                 this.Kids = oKids;
 
-                resolve(this.Kids);
+                resolve(this.Kids); }
             });
 
         });

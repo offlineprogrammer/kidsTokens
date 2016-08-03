@@ -1,7 +1,9 @@
 import {FORM_DIRECTIVES, FormBuilder, Validators, Control, ControlGroup} from '@angular/common';
 import { Component }                 from '@angular/core';
-import { Alert,NavParams, ViewController, NavController } from 'ionic-angular';
+import { Alert, NavParams, ViewController, NavController } from 'ionic-angular';
 import { DataService }               from '../../services/data';
+import { Child }                       from '../../models/child';
+
 
 @Component({
     templateUrl: 'build/pages/home/add-kid-modal.html'
@@ -18,8 +20,9 @@ export class AddKidModal {
     navParams: NavParams) {
 
         this.form = new ControlGroup({
-      firstName: new Control('', Validators.required),
-      token: new Control('', Validators.required)
+      kidName: new Control('', Validators.required),
+      tokenType: new Control('', Validators.required),
+      tokenNumbers: new Control('', Validators.required)
     });
        
     }
@@ -29,10 +32,15 @@ export class AddKidModal {
     }
 
       processForm() {
-        let newkid: any;
+
+        let newkid: Child;
         newkid = {
-            name: this.form.value.firstName,
-            token: this.form.value.token
+            childId: '1',
+            name: this.form.value.kidName,
+            tokenType: this.form.value.tokenType,
+            tokenNumbers: this.form.value.tokenNumbers,
+            isActive: true
+            
         };
         this.dataService.addKid(newkid)
         .then(() => {

@@ -11,6 +11,7 @@ import {
 import { AddKidModal }                                  from './add-kid-modal';
 
 
+
 @Component({
   templateUrl: 'build/pages/home/home.html'
 
