@@ -9,6 +9,7 @@ import {
   DataService
 } from '../../services/data';
 import { AddKidModal }                                  from './add-kid-modal';
+import { Child }                       from '../../models/child';
 
 
 
@@ -17,7 +18,8 @@ import { AddKidModal }                                  from './add-kid-modal';
 
 })
 export class HomePage {
-  items: Array < any > ;
+  kids: Child[] =[];
+ 
   constructor(
     private dataService: DataService,
      private nav: NavController,
@@ -28,7 +30,7 @@ export class HomePage {
     this.dataService.getKids()
       .then((response) => {
 
-        this.items = response;
+        this.kids = response;
 
       });
 

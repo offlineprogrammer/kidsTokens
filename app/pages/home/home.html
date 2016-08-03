@@ -11,8 +11,8 @@
   
   <h2>Welcome to Kids Tokens!</h2>
   <ion-list>
-    <ion-item *ngFor="let item of items" (click)="itemSelected(item)">
-      {{item.name}}\{{item.token}}
+    <ion-item *ngFor="let item of kids" (click)="itemSelected(item)">
+      {{item.name}}\{{item.tokenType}}
     </ion-item>
   </ion-list>
   

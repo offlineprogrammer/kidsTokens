@@ -26,7 +26,7 @@ export class DataService {
     private DB_NAME: string = 'kidsToken.db';
     private KIDS_KEY: string = 'kids';
     private LOCATION_KEY: string = 'location';
-    private Kids: any = [];
+    Kids: Child[] = [];
 
     constructor(
         private http: Http,
@@ -56,6 +56,11 @@ export class DataService {
     addKid(data: Child): Promise < any > {
         let oKids: any;
         return new Promise((resolve, reject) => {
+             if (typeof this.Kids === 'undefined')
+             {
+                 this.Kids = [];
+
+             }
             this.Kids.push(data);
         this.saveData(this.Kids, this.KIDS_KEY);
         resolve('Done');
@@ -65,14 +70,14 @@ export class DataService {
                     });
     }
 
-    getKids(): Promise < any > {
+    getKids(): Promise < Child[] > {
         let oKids: any;
         return new Promise(resolve => {
-            this.Kids = this.storage.get(this.KIDS_KEY).then((value) => {
+             this.storage.get(this.KIDS_KEY).then((value) => {
                 if (value) {
                 console.log(value);
-                oKids = JSON.parse(value);
-                this.Kids = oKids;
+                this.Kids = JSON.parse(value);
+               // this.Kids = oKids;
 
                 resolve(this.Kids); }
             });
