@@ -19,7 +19,10 @@
 
             <ion-item>
                 <ion-label fixed>Select Token</ion-label>
-                <ion-input ngControl="tokenType" type="text"></ion-input>
+                <ion-select [(ngModel)]="tokenType">
+                    <ion-option value="Star">Star</ion-option>
+                    <ion-option value="Face">Face</ion-option>
+                </ion-select>
             </ion-item>
 
             <ion-item>

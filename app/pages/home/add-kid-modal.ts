@@ -11,6 +11,8 @@ import { Child }                       from '../../models/child';
 export class AddKidModal {
     rootParams: any;
     form;
+    tokenType: string = 'Star';
+
 
     
 
@@ -18,10 +20,10 @@ export class AddKidModal {
     private dataService: DataService,
     private nav: NavController,
     navParams: NavParams) {
-
+       
+        
         this.form = new ControlGroup({
-      kidName: new Control('', Validators.required),
-      tokenType: new Control('', Validators.required),
+      kidName: new Control('', Validators.required),      
       tokenNumbers: new Control('', Validators.required)
     });
    
@@ -53,7 +55,7 @@ export class AddKidModal {
         newkid = {
             childId: this.generateUUID(),
             name: this.form.value.kidName,
-            tokenType: this.form.value.tokenType,
+            tokenType: this.tokenType,
             tokenNumbers: this.form.value.tokenNumbers,
             isActive: true
             
