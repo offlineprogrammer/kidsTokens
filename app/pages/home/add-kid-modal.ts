@@ -29,6 +29,18 @@ export class AddKidModal {
     }
     
     
+         private generateUUID(): any {
+            var d = new Date().getTime();
+
+            var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx'.replace(/[xy]/g, function(c) {
+                var r = (d + Math.random() * 16) % 16 | 0;
+                d = Math.floor(d / 16);
+                return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+            });
+
+            return uuid;
+        }
+
 
 
     close() {
@@ -39,7 +51,7 @@ export class AddKidModal {
 
         let newkid: Child;
         newkid = {
-            childId: '1',
+            childId: this.generateUUID(),
             name: this.form.value.kidName,
             tokenType: this.form.value.tokenType,
             tokenNumbers: this.form.value.tokenNumbers,
@@ -58,9 +70,11 @@ export class AddKidModal {
     // });
 
     if (this.form.status === 'VALID') {
-      this.nav.present(alert).then(() => {
-        this.close();
-         });
+      // this.nav.present(alert).then(() => {
+      //   this.close();
+      //    });
+
+         this.close();
       
     }
            
