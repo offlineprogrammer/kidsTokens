@@ -49,13 +49,13 @@ export class AddKidModal {
         this.dataService.addKid(newkid)
         .then(() => {
 
-          let alert = Alert.create({
-      title: 'New Kid',
-      message: 'New Kid: ' + this.form.value.firstName + ' ' + this.form.value.token,
-      buttons: [{
-        text: 'Ok',
-      }]
-    });
+    //       let alert = Alert.create({
+    //   title: 'New Kid',
+    //   message: 'New Kid: ' + this.form.value.firstName + ' ' + this.form.value.token,
+    //   buttons: [{
+    //     text: 'Ok',
+    //   }]
+    // });
 
     if (this.form.status === 'VALID') {
       this.nav.present(alert).then(() => {

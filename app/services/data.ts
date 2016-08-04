@@ -17,7 +17,9 @@ import {
 
 import 'rxjs/Rx';
 
-import { Child }                       from '../models/child';
+import {
+    Child
+} from '../models/child';
 
 @Injectable()
 export class DataService {
@@ -51,39 +53,40 @@ export class DataService {
         });
     }
 
-   
+
 
     addKid(data: Child): Promise < any > {
         let oKids: any;
         return new Promise((resolve, reject) => {
-             if (typeof this.Kids === 'undefined')
-             {
-                 this.Kids = [];
+            if (typeof this.Kids === 'undefined') {
+                this.Kids = [];
 
-             }
+            }
             this.Kids.push(data);
-        this.saveData(this.Kids, this.KIDS_KEY);
-        resolve('Done');
+            this.saveData(this.Kids, this.KIDS_KEY);
+            resolve('Done');
 
         }).catch((error) => {
-                       // reject('Only available on a device');
-                    });
+            // reject('Only available on a device');
+        });
     }
 
     getKids(): Promise < Child[] > {
         let oKids: any;
         return new Promise(resolve => {
-            if (typeof (this.storage) !== 'undefined') {
-             this.storage.get(this.KIDS_KEY).then((value) => {
-                if (value) {
-                console.log(value);
-                this.Kids = JSON.parse(value);
-               // this.Kids = oKids;
+            if (typeof(this.storage) !== 'undefined') {
+                this.storage.get(this.KIDS_KEY).then((value) => {
+                    if (value) {
+                        console.log(value);
+                        this.Kids = JSON.parse(value);
+                        // this.Kids = oKids;
 
-                resolve(this.Kids); }
-            });
+                        resolve(this.Kids);
+                    }
+                });
 
-        }});
+            }
+        });
     }
 
     setProfile(data: any): void {
