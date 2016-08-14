@@ -12,6 +12,9 @@
   <h2>Welcome to Kids Tokens!</h2>
   <ion-list>
     <ion-item *ngFor="let item of kids" (click)="itemSelected(item)">
+      <ion-avatar item-left>
+      <img src="{{item.tokenType}}">
+    </ion-avatar>
       {{item.name}}\{{item.tokenType}}
     </ion-item>
   </ion-list>
