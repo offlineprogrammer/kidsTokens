@@ -10,7 +10,30 @@
 <ion-content padding class="childInfo">
 
   <h2>{{oChild.name}}</h2>
-  
-     
+
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        Token Type
+      </ion-label>
+      <ion-thumbnail item-left>
+      <img src="{{oChild.tokenType}}">
+    </ion-thumbnail>
+    <button clear item-right>Change</button>
+    </ion-item>
+        <ion-item>
+      <ion-label>
+        # of Token
+      </ion-label>
+      <ion-note item-right>
+      {{oChild.tokenNumbers}}
+      </ion-note>
+      <ion-thumbnail item-left>
+      <img src="">
+    </ion-thumbnail>
+      
+    <button clear item-right>Change</button>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
