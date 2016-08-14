@@ -10,6 +10,10 @@ import {
 } from '../../services/data';
 import { AddKidModal }                                  from './add-kid-modal';
 import { Child }                       from '../../models/child';
+import {
+  ChildInfo
+} from '../child/ChildInfo';
+
 
 
 
@@ -43,19 +47,18 @@ export class HomePage {
     addNewKid(): void {
       let modal = Modal.create(AddKidModal);
         this.nav.present(modal);
-
-      // let newkid: any;
-      //   newkid = {
-      //       name: 'Malaka',
-      //       token: 'start'
-      //   };
-      //   this.dataService.addKid(newkid)
-      //   .then(() => {
-           
-      //     });
    
   }
 
+    itemSelected(data: Child): void {
+      this.navCtrl.push(ChildInfo, {
+      child: data
+      
+    });
+  
+      console.log(data);
+   
+  }
 
   
 }
