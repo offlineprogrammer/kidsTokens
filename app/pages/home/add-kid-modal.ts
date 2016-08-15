@@ -1,13 +1,8 @@
 import {
-    FORM_DIRECTIVES,
-    FormBuilder,
-    Validators,
-    Control,
-    ControlGroup
-} from '@angular/common';
-import {
     Component
 } from '@angular/core';
+import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
+import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
 import {
     Alert,
     NavParams,
@@ -39,9 +34,9 @@ export class AddKidModal {
         navParams: NavParams) {
 
 
-        this.form = new ControlGroup({
-            kidName: new Control('', Validators.required),
-            tokenNumbers: new Control('', Validators.required)
+        this.form = new FormGroup({
+            kidName: new FormControl('', Validators.required),
+            tokenNumbers: new FormControl('', Validators.required)
         });
 
 
@@ -77,6 +72,7 @@ export class AddKidModal {
             isActive: true
 
         };
+         if (this.form.status === 'VALID') {
         this.dataService.addKid(newkid)
             .then(() => {
 
@@ -88,16 +84,16 @@ export class AddKidModal {
                 //   }]
                 // });
 
-                if (this.form.status === 'VALID') {
+               
                     // this.nav.present(alert).then(() => {
                     //   this.close();
                     //    });
 
                     this.close();
 
-                }
+                
 
-            });
+            });};
 
 
     }

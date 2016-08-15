@@ -9,17 +9,17 @@
     </ion-navbar>
 </ion-header>
 <ion-content>
-    <form (submit)="processForm()" [ngFormModel]="form">
+    <form (submit)="processForm()" [formGroup]="form">
         <ion-list>
 
             <ion-item>
                 <ion-label fixed>Name</ion-label>
-                <ion-input ngControl="kidName" autofocus type="text"></ion-input>
+                <ion-input formControlName="kidName" autofocus type="text"></ion-input>
             </ion-item>
 
             <ion-item>
                 <ion-label fixed>Select Token</ion-label>
-                <ion-select [(ngModel)]="tokenType">
+                <ion-select [(ngModel)]="tokenType" [ngModelOptions]="{standalone: true}">
                     <ion-option value="images/star.png">Star</ion-option>
                     <ion-option value="images/face.png">Face</ion-option>
                 </ion-select>
@@ -27,13 +27,13 @@
 
             <ion-item>
                 <ion-label fixed># Of Tokens</ion-label>
-                <ion-input type="number" ngControl="tokenNumbers" type="text"></ion-input>
+                <ion-input type="number" formControlName="tokenNumbers" type="text"></ion-input>
             </ion-item>
 
         </ion-list>
 
         <div padding>
-            <button primary block type="submit">Add</button>
+            <button primary block type="submit" [disabled]="!form.valid">Add</button>
         </div>
     </form>
 </ion-content>

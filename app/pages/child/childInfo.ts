@@ -36,24 +36,80 @@ export class ChildInfo {
      changeToken(): void {
      
      let actionSheet = this.actionSheetController.create({
-      title: 'Modify your album',
+      title: 'Change Token Type',
+      cssClass: 'action-sheets-basic-page' ,
       buttons: [
         {
-          text: 'Destructive',
-          role: 'destructive',
+          text: 'Star',
+          
+           //icon: 'images/star.png',
           handler: () => {
-            console.log('Destructive clicked');
+            this.oChild.tokenType = 'images/star.png';
+            this.updateData();
+           
           }
         }, {
-          text: 'Archive',
+          text: 'Smiley Face',
+          
           handler: () => {
-            console.log('Archive clicked');
+            this.oChild.tokenType = 'images/face.png';
+             this.updateData();
+            
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+   
+  }
+
+
+    private updateData(): void {
+        this.dataService.updateKids()
+            .then(() => {});
+    }
+
+
+
+     changeTokenNumbers(): void {
+     
+     let actionSheet = this.actionSheetController.create({
+      title: 'Change Token Numbers',
+      buttons: [
+        {
+          text: '5',
+          role: '5',
+          handler: () => {
+            this.oChild.tokenNumbers = 5;
+            this.updateData();
           }
         }, {
-          text: 'Cancel',
-          role: 'cancel',
+          text: '4',
+          role: '4',
           handler: () => {
-            console.log('Cancel clicked');
+            this.oChild.tokenNumbers = 4;
+            this.updateData();
+          }
+        }, {
+          text: '3',
+          role: '3',
+          handler: () => {
+            this.oChild.tokenNumbers = 3;
+            this.updateData();
+          }
+        }, {
+          text: '2',
+          role: '2',
+          handler: () => {
+            this.oChild.tokenNumbers = 2;
+            this.updateData();
+          }
+        }, {
+          text: '1',
+          role: '1',
+          handler: () => {
+            this.oChild.tokenNumbers = 1;
+            this.updateData();
           }
         }
       ]
