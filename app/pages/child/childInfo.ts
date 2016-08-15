@@ -121,8 +121,8 @@ export class ChildInfo {
   }
 
 
-      addNewTask(): void {
-      let modal = this.modalController.create(AddTaskModal);
+      addNewTask(data: any): void {
+      let modal = this.modalController.create(AddTaskModal, {'childId': data});
         modal.present();
    
   }

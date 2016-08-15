@@ -23,13 +23,13 @@ import {
 export class AddTaskModal {
     rootParams: any;
     form;
+    childId: string;
     
     constructor(private viewController: ViewController,
         private dataService: DataService,
         private nav: NavController,
         navParams: NavParams) {
-
-
+        this.childId = navParams.get('childId');
         this.form = new FormGroup({
             taskName: new FormControl('', Validators.required)
         });
@@ -61,7 +61,7 @@ export class AddTaskModal {
         let newtask: Task;
         newtask = {
             taskId: this.generateUUID(),
-            childId: '',
+            childId: this.childId,
             name: this.form.value.taskName
 
         };
