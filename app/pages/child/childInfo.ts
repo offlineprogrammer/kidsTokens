@@ -122,7 +122,7 @@ export class ChildInfo {
 
 
       addNewTask(data: any): void {
-      let modal = this.modalController.create(AddTaskModal, {'childId': data});
+      let modal = this.modalController.create(AddTaskModal, {'child': this.oChild});
         modal.present();
    
   }

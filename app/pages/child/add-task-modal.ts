@@ -15,6 +15,7 @@ import {
 import {
     Task
 } from '../../models/task';
+import { Child }                       from '../../models/child';
 
 
 @Component({
@@ -24,12 +25,13 @@ export class AddTaskModal {
     rootParams: any;
     form;
     childId: string;
+    oChild: Child;
     
     constructor(private viewController: ViewController,
         private dataService: DataService,
         private nav: NavController,
         navParams: NavParams) {
-        this.childId = navParams.get('childId');
+        this.oChild = navParams.get('child');
         this.form = new FormGroup({
             taskName: new FormControl('', Validators.required)
         });
@@ -61,12 +63,13 @@ export class AddTaskModal {
         let newtask: Task;
         newtask = {
             taskId: this.generateUUID(),
-            childId: this.childId,
+            childId: this.oChild.childId,
             name: this.form.value.taskName
 
         };
          if (this.form.status === 'VALID') {
-        this.dataService.addTask(newtask)
+             this.oChild.tasks.push(newtask);
+        this.dataService.updateKids()
             .then(() => {
                     this.close();
             }); };

@@ -1,3 +1,4 @@
+import { Task } from './task';
 
 export class Child {
     childId: string;
@@ -5,5 +6,6 @@ export class Child {
     tokenType: string;
     tokenNumbers: number;
     isActive: boolean;
+    tasks:Task[];
    
 }

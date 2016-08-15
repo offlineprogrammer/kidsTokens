@@ -69,7 +69,8 @@ export class AddKidModal {
             name: this.form.value.kidName,
             tokenType: this.tokenType,
             tokenNumbers: this.form.value.tokenNumbers,
-            isActive: true
+            isActive: true,
+            tasks:[]
 
         };
          if (this.form.status === 'VALID') {

@@ -31,6 +31,7 @@ export class DataService {
 
     private DB_NAME: string = 'kidsToken.db';
     private KIDS_KEY: string = 'kids';
+    
     private LOCATION_KEY: string = 'location';
     Kids: Child[] = [];
 
