@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-navbar primary>
+        <ion-title>
+            New Task
+        </ion-title>
+        <ion-buttons end>
+            <button (click)="close()"><ion-icon name="close"></ion-icon></button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <form (submit)="processForm()" [formGroup]="form">
+        <ion-list>
+
+            <ion-item>
+                
+                <ion-input aria-placeholder="Task Name" formControlName="taskName" autofocus type="text"></ion-input>
+            </ion-item>
+        </ion-list>
+
+        <div padding>
+            <button primary block type="submit" [disabled]="!form.valid">Add</button>
+        </div>
+    </form>
+</ion-content>

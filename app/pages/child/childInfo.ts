@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import { Modal }                                           from 'ionic-angular/components/modal/modal';
 import {
-  NavController, NavParams, ActionSheetController  
+  NavController, NavParams, ActionSheetController, ModalController   
 } from 'ionic-angular';
 
 
@@ -12,6 +12,7 @@ import {
 } from '../../services/data';
 
 import { Child }                       from '../../models/child';
+import { AddTaskModal }                                  from './add-task-modal';
 
 
 
@@ -27,7 +28,8 @@ export class ChildInfo {
      private nav: NavController,
     private navCtrl: NavController,
     private navParams: NavParams,
-    private actionSheetController : ActionSheetController
+    private actionSheetController : ActionSheetController,
+    private modalController : ModalController
   ) {
    this.oChild = navParams.get('child');
    
@@ -117,6 +119,14 @@ export class ChildInfo {
     actionSheet.present();
    
   }
+
+
+      addNewTask(): void {
+      let modal = this.modalController.create(AddTaskModal);
+        modal.present();
+   
+  }
+
 
    
 

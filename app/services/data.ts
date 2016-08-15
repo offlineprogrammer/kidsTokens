@@ -21,6 +21,10 @@ import {
     Child
 } from '../models/child';
 
+import {
+    Task
+} from '../models/task';
+
 @Injectable()
 export class DataService {
     storage: Storage;
@@ -63,6 +67,22 @@ export class DataService {
             }
             
             this.saveData(this.Kids, this.KIDS_KEY);
+            resolve('Done');
+
+        }).catch((error) => {
+            // reject('Only available on a device');
+        });
+    }
+
+    addTask(data: Task): Promise < any > {
+        let oKids: any;
+        return new Promise((resolve, reject) => {
+            if (typeof this.Kids === 'undefined') {
+                this.Kids = [];
+
+            }
+            // this.Kids.push(data);
+            // this.saveData(this.Kids, this.KIDS_KEY);
             resolve('Done');
 
         }).catch((error) => {

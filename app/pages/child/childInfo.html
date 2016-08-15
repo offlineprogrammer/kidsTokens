@@ -11,7 +11,8 @@
 
   <h2>{{oChild.name}}</h2>
 
-  <ion-list>
+  <ion-item-group>
+   
     <ion-item>
       <ion-label>
         Token Type
@@ -34,6 +35,10 @@
 
       <button clear item-right (click)="changeTokenNumbers()">Change</button>
     </ion-item>
-  </ion-list>
 
+    <ion-item-divider light>I am working for:</ion-item-divider>
+  </ion-item-group>
 </ion-content>
+<button fab primary fab-bottom fab-right (click)="addNewTask()" style="z-index:100">
+    <ion-icon name="add"></ion-icon>
+  </button>
