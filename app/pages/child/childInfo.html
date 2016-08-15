@@ -17,22 +17,22 @@
         Token Type
       </ion-label>
       <ion-thumbnail item-left>
-      <img src="{{oChild.tokenType}}">
-    </ion-thumbnail>
-    <button clear item-right>Change</button>
+        <img src="{{oChild.tokenType}}">
+      </ion-thumbnail>
+      <button clear item-right (click)="changeToken()">Change</button>
     </ion-item>
-        <ion-item>
+    <ion-item>
       <ion-label>
         # of Token
       </ion-label>
       <ion-note item-right>
-      {{oChild.tokenNumbers}}
+        {{oChild.tokenNumbers}}
       </ion-note>
       <ion-thumbnail item-left>
-      <img src="">
-    </ion-thumbnail>
-      
-    <button clear item-right>Change</button>
+        <img src="">
+      </ion-thumbnail>
+
+      <button clear item-right>Change</button>
     </ion-item>
   </ion-list>
 

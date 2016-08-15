@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import { Modal }                                           from 'ionic-angular/components/modal/modal';
 import {
-  NavController
+  NavController,ModalController 
 } from 'ionic-angular';
 import {
   DataService
@@ -27,7 +27,8 @@ export class HomePage {
   constructor(
     private dataService: DataService,
      private nav: NavController,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private modalController : ModalController
   ) {
 
 
@@ -45,8 +46,8 @@ export class HomePage {
   }
 
     addNewKid(): void {
-      let modal = Modal.create(AddKidModal);
-        this.nav.present(modal);
+      let modal = this.modalController.create(AddKidModal);
+        modal.present();
    
   }
 

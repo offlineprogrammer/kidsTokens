@@ -3,8 +3,10 @@ import {
 } from '@angular/core';
 import { Modal }                                           from 'ionic-angular/components/modal/modal';
 import {
-  NavController, NavParams 
+  NavController, NavParams, ActionSheetController  
 } from 'ionic-angular';
+
+
 import {
   DataService
 } from '../../services/data';
@@ -24,9 +26,39 @@ export class ChildInfo {
     private dataService: DataService,
      private nav: NavController,
     private navCtrl: NavController,
-    private navParams: NavParams
+    private navParams: NavParams,
+    private actionSheetController : ActionSheetController
   ) {
    this.oChild = navParams.get('child');
+   
+  }
+
+     changeToken(): void {
+     
+     let actionSheet = this.actionSheetController.create({
+      title: 'Modify your album',
+      buttons: [
+        {
+          text: 'Destructive',
+          role: 'destructive',
+          handler: () => {
+            console.log('Destructive clicked');
+          }
+        }, {
+          text: 'Archive',
+          handler: () => {
+            console.log('Archive clicked');
+          }
+        }, {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
    
   }
 
