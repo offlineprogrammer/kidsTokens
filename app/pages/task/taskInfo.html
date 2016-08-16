@@ -10,6 +10,25 @@
 <ion-content padding class="taskInfo">
 
   <h2>{{oTask.name}}</h2>
+<ion-grid>
+  <ion-row class="row" wrap responsive-sm>
+    <ion-col width-10  *ngFor="#number of tokenNumbers let i = index">
+      <h2>{{i}}</h2>
 
-  
+        <img *ngIf="i < oChild.tokenNumbers" #bwimage src="{{oChild.tokenType}}" >
+
+         <img *ngIf="i > oChild.tokenNumbers" #bwimage src="{{oChild.tokenType}}">
+
+     
+    </ion-col>
+
+
+  </ion-row>
+
+</ion-grid>
+
+
+
+
+
 </ion-content>

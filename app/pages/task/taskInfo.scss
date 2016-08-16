@@ -1,2 +1,16 @@
 .taskInfo {
+    .scroll-content {
+        display: flex;
+        flex-direction: column;
+    }
+    .ion-row {
+        flex: 1;
+    }
+    #bwimage {
+        -webkit-filter: grayscale(1);
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+        filter: url(#greyscale);
+        filter: gray;
+    }
 }

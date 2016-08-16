@@ -22,6 +22,7 @@ import { Task }                       from '../../models/task';
 export class TaskInfo {
  oChild: Child;
  oTask: Task;
+ tokenNumbers: number[];
  
   constructor(
     private dataService: DataService,
@@ -31,6 +32,8 @@ export class TaskInfo {
     private modalController : ModalController
   ) {
    this.oTask = navParams.get('task');
+   this.oChild = navParams.get('child');
+   this.tokenNumbers = Array(+this.oChild.tokenNumbers).fill(1);
    
   }
 

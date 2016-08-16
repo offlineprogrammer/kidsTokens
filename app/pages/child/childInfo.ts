@@ -133,10 +133,7 @@ export class ChildInfo {
 
 
   itemSelected(data: Task): void {
-      this.navCtrl.push(TaskInfo, {
-      task: data
-      
-    });
+      this.navCtrl.push(TaskInfo, {task: data, child: this.oChild});
   
       console.log(data);
    
