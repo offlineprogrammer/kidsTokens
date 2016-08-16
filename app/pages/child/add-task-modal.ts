@@ -65,7 +65,7 @@ export class AddTaskModal {
             taskId: this.generateUUID(),
             childId: this.oChild.childId,
             name: this.form.value.taskName,
-            score: 0
+            score: 3
 
         };
          if (this.form.status === 'VALID') {

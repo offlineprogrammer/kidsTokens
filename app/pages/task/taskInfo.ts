@@ -43,6 +43,20 @@ export class TaskInfo {
             .then(() => {});
     }
 
+    addToken(): void {
+      console.log(this.oTask.score);
+      this.oTask.score++;
+      this.updateData();
+       console.log(this.oTask.score);
+    }
+
+    removeToken(): void {
+      console.log(this.oTask.score);
+      this.oTask.score--;
+      this.updateData();
+      console.log(this.oTask.score);
+    }
+
 
 
    

@@ -10,22 +10,25 @@
 <ion-content padding class="taskInfo">
 
   <h2>{{oTask.name}}</h2>
-<ion-grid>
-  <ion-row class="row" wrap responsive-sm>
-    <ion-col width-50  *ngFor="let number of tokenNumbers let i = index">
-    
-
-        <img  ng-class="{'bwimage': i > oChild.tokenNumbers}"  src="{{oChild.tokenType}}" >
-
-        
-
-     
-    </ion-col>
+  <ion-grid>
+    <ion-row class="row" wrap responsive-sm>
+      <ion-col width-50 *ngFor="let number of tokenNumbers let i = index">
 
 
-  </ion-row>
 
-</ion-grid>
+        <img *ngIf="i + 1 > oTask.score" class="bwimage" src="{{oChild.tokenType}}" (click)="addToken()">
+
+        <img *ngIf="i + 1 <= oTask.score" src="{{oChild.tokenType}}" (click)="removeToken()">
+
+
+
+
+      </ion-col>
+
+
+    </ion-row>
+
+  </ion-grid>
 
 
 
