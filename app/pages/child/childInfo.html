@@ -37,6 +37,12 @@
     </ion-item>
 
     <ion-item-divider light>I am working for:</ion-item-divider>
+     <ion-item *ngFor="let item of oChild.tasks" (click)="itemSelected(item)">
+      
+      <h2>
+      {{item.name}}
+    </h2>
+    </ion-item>
   </ion-item-group>
 </ion-content>
 <button fab primary fab-bottom fab-right (click)="addNewTask(oChild.childId)" style="z-index:100">

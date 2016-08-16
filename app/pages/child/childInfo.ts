@@ -12,7 +12,11 @@ import {
 } from '../../services/data';
 
 import { Child }                       from '../../models/child';
+import { Task }                       from '../../models/task';
 import { AddTaskModal }                                  from './add-task-modal';
+import {
+  TaskInfo
+} from '../task/TaskInfo';
 
 
 
@@ -124,6 +128,17 @@ export class ChildInfo {
       addNewTask(data: any): void {
       let modal = this.modalController.create(AddTaskModal, {'child': this.oChild});
         modal.present();
+   
+  }
+
+
+  itemSelected(data: Task): void {
+      this.navCtrl.push(TaskInfo, {
+      task: data
+      
+    });
+  
+      console.log(data);
    
   }
 
