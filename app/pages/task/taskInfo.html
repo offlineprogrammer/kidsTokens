@@ -12,12 +12,12 @@
   <h2>{{oTask.name}}</h2>
 <ion-grid>
   <ion-row class="row" wrap responsive-sm>
-    <ion-col width-10  *ngFor="#number of tokenNumbers let i = index">
-      <h2>{{i}}</h2>
+    <ion-col width-50  *ngFor="let number of tokenNumbers let i = index">
+    
 
-        <img *ngIf="i < oChild.tokenNumbers" #bwimage src="{{oChild.tokenType}}" >
+        <img  ng-class="{'bwimage': i > oChild.tokenNumbers}"  src="{{oChild.tokenType}}" >
 
-         <img *ngIf="i > oChild.tokenNumbers" #bwimage src="{{oChild.tokenType}}">
+        
 
      
     </ion-col>
