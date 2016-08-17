@@ -50,16 +50,12 @@ fillArrayWithNumbers(n:number) {
   getTriples() {
     let triples = [];
     let length = this.tokenNumbers.length;
-    for (let i = 0; i < length; i += 3) {
+    for (let i = 0; i < length; i += 2) {
         let trio = [];
         trio.push(this.tokenNumbers[i]);
         if (i + 1 < length) {
             trio.push(this.tokenNumbers[i + 1]);
         }
-        if (i + 2 < length) {
-            trio.push(this.tokenNumbers[i + 2]);
-        }
-
         triples.push(trio);
     }
     return triples;
