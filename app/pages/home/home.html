@@ -14,12 +14,15 @@
     <ion-row>
       <ion-col>
     <ion-item *ngFor="let item of kids" (click)="itemSelected(item)">
-      <ion-avatar item-left>
+      <ion-thumbnail item-left>
         <img src="{{item.tokenType}}">
-      </ion-avatar>
+      </ion-thumbnail>
       <h2>
       {{item.name}}
     </h2>
+    <ion-avatar item-right>
+        <img src="{{item.tokenType}}">
+      </ion-avatar>
     </ion-item>
       </ion-col>
   </ion-row>

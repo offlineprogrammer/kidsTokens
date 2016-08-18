@@ -11,15 +11,28 @@
 <ion-content>
     <form (submit)="processForm()" [formGroup]="form">
         <ion-list>
-
             <ion-item>
-                
-                <ion-input aria-placeholder="Task Name" formControlName="taskName" autofocus type="text"></ion-input>
+                <ion-input placeholder="Task Name" formControlName="taskName" autofocus type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-row>
+                    <ion-col width-50>
+                <button full danger round large (click)="takePhoto()">
+                    <ion-icon name="md-camera"></ion-icon>
+                </button>
+                </ion-col>
+                <ion-col width-50>
+                <button full secondary round large (click)="getPhoto()">
+                    <ion-icon name="md-image"></ion-icon>
+                </button>
+                </ion-col>
+                </ion-row>
             </ion-item>
         </ion-list>
-
         <div padding>
-            <button primary block type="submit" [disabled]="!form.valid">Add</button>
+            <button full danger round large type="submit" [disabled]="!form.valid">
+                    <ion-icon name="md-done-all"></ion-icon>
+                </button>            
         </div>
     </form>
 </ion-content>

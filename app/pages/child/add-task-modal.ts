@@ -2,6 +2,7 @@ import {
     Component
 } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
+import {Camera} from 'ionic-native';
 import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
 import {
     Alert,
