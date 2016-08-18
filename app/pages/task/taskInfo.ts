@@ -81,6 +81,11 @@ fillArrayWithNumbers(n:number) {
       console.log(this.oTask.score);
     }
 
+    resetScore(): void {      
+      this.oTask.score = 0;
+      this.updateData();      
+    }
+
 
 
    

@@ -139,6 +139,16 @@ export class ChildInfo {
    
   }
 
+  deleteTask(data: Task): void {
+ 
+        let index = this.oChild.tasks.indexOf(data);
+ 
+        if (index > -1) {
+            this.oChild.tasks.splice(index, 1);
+        }
+    }
+
+
 
    
 

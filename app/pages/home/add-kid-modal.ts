@@ -24,6 +24,7 @@ export class AddKidModal {
     rootParams: any;
     form;
     tokenType: string = 'images/star.png';
+    tokenNumbers: number = 5;
 
 
 
@@ -35,8 +36,7 @@ export class AddKidModal {
 
 
         this.form = new FormGroup({
-            kidName: new FormControl('', Validators.required),
-            tokenNumbers: new FormControl('', Validators.required)
+            kidName: new FormControl('', Validators.required)
         });
 
 
@@ -68,7 +68,7 @@ export class AddKidModal {
             childId: this.generateUUID(),
             name: this.form.value.kidName,
             tokenType: this.tokenType,
-            tokenNumbers: this.form.value.tokenNumbers,
+            tokenNumbers: this.tokenNumbers,
             isActive: true,
             tasks:[]
 
