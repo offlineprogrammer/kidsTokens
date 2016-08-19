@@ -91,6 +91,30 @@ export class DataService {
         });
     }
 
+    deleteKid(data: Child): Promise < any > {
+        
+        return new Promise((resolve, reject) => {
+            if (typeof this.Kids === 'undefined') {
+                this.Kids = [];
+
+            }
+             let index =  this.Kids.indexOf(data);
+ 
+        if (index > -1) {
+             this.Kids.splice(index, 1);
+        }
+
+
+
+           
+            this.saveData(this.Kids, this.KIDS_KEY);
+            resolve('Done');
+
+        }).catch((error) => {
+            // reject('Only available on a device');
+        });
+    }
+
 
     addKid(data: Child): Promise < any > {
         let oKids: any;

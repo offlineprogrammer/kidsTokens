@@ -1,6 +1,11 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Kids Tokens</ion-title>
+    <ion-buttons end>
+      <button royal (click)="deleteTask(oTask)">
+        <ion-icon name="md-trash" ></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content padding class="taskInfo">
@@ -26,19 +31,21 @@
         </ion-thumbnail>
       </ion-col>
     </ion-row>
-
-    <ion-row *ngIf="oTask.score == oChild.tokenNumbers">
-      <h2>Well done !!!</h2>
+    <ion-row  *ngIf="oTask.score < oChild.tokenNumbers">
+          <h2>Keep up the good work</h2>
     </ion-row>
-
-
-    <ion-row *ngIf="oTask.score == oChild.tokenNumbers">
-      <ion-col >
-        <button full danger round large (click)="resetScore()">
+    <ion-row  *ngIf="oTask.score == oChild.tokenNumbers">
+          <h2>You did it. Well done !!</h2>
+    </ion-row>
+    <ion-row >
+      <ion-col>
+        <button [disabled]="oTask.score < oChild.tokenNumbers" full danger round large (click)="resetScore()">
           <ion-icon name="md-refresh"></ion-icon>
         </button>
       </ion-col>
     </ion-row>
-
+    <div class="task-photo">
+      <img src="images/trythis.png" class="task-background-image">
+    </div>
   </ion-grid>
 </ion-content>

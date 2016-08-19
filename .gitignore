@@ -8,3 +8,14 @@ plugins/
 *.swp
 .DS_Store
 Thumbs.db
+
+resources/android/icon/drawable-hdpi-icon.png
+resources/android/icon/drawable-hdpi-icon.png
+resources/android/icon/drawable-hdpi-icon.png
+resources/android/icon/drawable-hdpi-icon.png
+resources/android/icon/drawable-ldpi-icon.png
+resources/android/splash/drawable-port-xxxhdpi-screen.png
+resources/android/splash/drawable-port-xxxhdpi-screen.png
+resources/android/splash/drawable-port-xxxhdpi-screen.png
+resources/android/splash/drawable-land-xhdpi-screen.png
+*.png

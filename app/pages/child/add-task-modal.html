@@ -8,21 +8,22 @@
         </ion-buttons>
     </ion-navbar>
 </ion-header>
-<ion-content>
+<ion-content class="add-task">
     <form (submit)="processForm()" [formGroup]="form">
         <ion-list>
             <ion-item>
-                <ion-input placeholder="Task Name" formControlName="taskName" autofocus type="text"></ion-input>
+                <ion-label floating>Task Name</ion-label>
+                <ion-input   formControlName="taskName" autofocus type="text"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-row>
                     <ion-col width-50>
-                <button full danger round large (click)="takePhoto()">
+                <button type="button" full danger round large (click)="takePhoto()">
                     <ion-icon name="md-camera"></ion-icon>
                 </button>
                 </ion-col>
                 <ion-col width-50>
-                <button full secondary round large (click)="getPhoto()">
+                <button type="button" full secondary round large (click)="openGallery()">
                     <ion-icon name="md-image"></ion-icon>
                 </button>
                 </ion-col>
@@ -30,9 +31,12 @@
             </ion-item>
         </ion-list>
         <div padding>
-            <button full danger round large type="submit" [disabled]="!form.valid">
+            <button full primary round large type="submit" [disabled]="!form.valid">
                     <ion-icon name="md-done-all"></ion-icon>
                 </button>            
         </div>
+        <div class="task-photo">
+      <img src="images/trythis.png" class="task-background-image">
+    </div>
     </form>
 </ion-content>

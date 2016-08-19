@@ -86,6 +86,20 @@ fillArrayWithNumbers(n:number) {
       this.updateData();      
     }
 
+    deleteTask(data: Task): void {
+ 
+        let index = this.oChild.tasks.indexOf(data);
+ 
+        if (index > -1) {
+            this.oChild.tasks.splice(index, 1);
+        }
+          this.updateData();      
+
+         this.navCtrl.pop();
+
+    }
+
+
 
 
    

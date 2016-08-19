@@ -4,4 +4,5 @@ export class Task {
     childId: string;
     name: string;
     score: number;
+    taskimage: string;
 }

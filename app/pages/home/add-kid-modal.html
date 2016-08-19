@@ -8,17 +8,17 @@
         </ion-buttons>
     </ion-navbar>
 </ion-header>
-<ion-content>
+<ion-content class="add-child">
     <form (submit)="processForm()" [formGroup]="form">
         <ion-list>
 
             <ion-item>
-                <ion-label fixed>Name</ion-label>
+                <ion-label floating>Name</ion-label>
                 <ion-input formControlName="kidName" autofocus type="text"></ion-input>
             </ion-item>
 
             <ion-item>
-                <ion-label fixed>Select Token</ion-label>
+                <ion-label floating>Select Token</ion-label>
                 <ion-select [(ngModel)]="tokenType" [ngModelOptions]="{standalone: true}">
                     <ion-option value="images/star.png">Star</ion-option>
                     <ion-option value="images/face.png">Face</ion-option>
@@ -26,7 +26,7 @@
             </ion-item>
 
             <ion-item>
-                <ion-label fixed># Of Tokens</ion-label>
+                <ion-label floating># Of Tokens</ion-label>
                 <ion-select [(ngModel)]="tokenNumbers" [ngModelOptions]="{standalone: true}">
                     <ion-option value="5">5</ion-option>
                     <ion-option value="4">4</ion-option>
@@ -35,11 +35,30 @@
                     <ion-option value="1">1</ion-option>
                 </ion-select>
             </ion-item>
+            <ion-item>
+                <ion-row>
+                    <ion-col width-50>
+                <button type="button" full danger round large (click)="takePhoto()">
+                    <ion-icon name="md-camera"></ion-icon>
+                </button>
+                </ion-col>
+                <ion-col width-50>
+                <button type="button" full secondary round large (click)="openGallery()">
+                    <ion-icon name="md-image"></ion-icon>
+                </button>
+                </ion-col>
+                </ion-row>
+            </ion-item>
 
         </ion-list>
 
         <div padding>
-            <button primary block type="submit" [disabled]="!form.valid">Add</button>
+            <button primary full  round large type="submit" [disabled]="!form.valid"><ion-icon name="md-person-add"></ion-icon></button>
+
         </div>
+
+         <div class="child-photo">
+      <img src="images/trythis.png" class="child-background-image">
+    </div>
     </form>
 </ion-content>

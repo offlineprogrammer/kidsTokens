@@ -2,6 +2,7 @@ import {
     Component
 } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
+import {Camera} from 'ionic-native';
 import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
 import {
     Alert,
@@ -25,6 +26,7 @@ export class AddKidModal {
     form;
     tokenType: string = 'images/star.png';
     tokenNumbers: number = 5;
+     base64Image: string;
 
 
 
@@ -41,6 +43,36 @@ export class AddKidModal {
 
 
     }
+
+     takePhoto() {
+    Camera.getPicture({
+        destinationType: Camera.DestinationType.DATA_URL,
+        targetWidth: 1000,
+        targetHeight: 1000
+    }).then((imageData) => {
+      // imageData is a base64 encoded string
+        this.base64Image = 'data:image/jpeg;base64,' + imageData;
+    }, (err) => {
+        console.log(err);
+    });
+  }
+
+ openGallery (): void {
+  let cameraOptions = {
+    sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+    destinationType: Camera.DestinationType.FILE_URI,      
+    quality: 100,
+    targetWidth: 1000,
+    targetHeight: 1000,
+    encodingType: Camera.EncodingType.JPEG,      
+    correctOrientation: true
+  }
+
+  Camera.getPicture(cameraOptions)
+    .then(file_uri => this.base64Image = file_uri, 
+    err => console.log(err));   
+}
+
 
 
     private generateUUID(): any {
@@ -76,19 +108,7 @@ export class AddKidModal {
          if (this.form.status === 'VALID') {
         this.dataService.addKid(newkid)
             .then(() => {
-
-                //       let alert = Alert.create({
-                //   title: 'New Kid',
-                //   message: 'New Kid: ' + this.form.value.firstName + ' ' + this.form.value.token,
-                //   buttons: [{
-                //     text: 'Ok',
-                //   }]
-                // });
-
-               
-                    // this.nav.present(alert).then(() => {
-                    //   this.close();
-                    //    });
+this.dataService.updateKids();
 
                     this.close();
 
