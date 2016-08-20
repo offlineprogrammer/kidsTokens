@@ -1,15 +1,22 @@
 import {
   Component
 } from '@angular/core';
-import { Modal }                                           from 'ionic-angular/components/modal/modal';
 import {
-  NavController,ModalController 
+  Modal
+} from 'ionic-angular/components/modal/modal';
+import {
+  NavController,
+  ModalController
 } from 'ionic-angular';
 import {
   DataService
 } from '../../services/data';
-import { AddKidModal }                                  from './add-kid-modal';
-import { Child }                       from '../../models/child';
+import {
+  AddKidModal
+} from './add-kid-modal';
+import {
+  Child
+} from '../../models/child';
 import {
   ChildInfo
 } from '../child/ChildInfo';
@@ -22,13 +29,13 @@ import {
 
 })
 export class HomePage {
-  kids: Child[] =[];
- 
+  kids: Child[] = [];
+
   constructor(
     private dataService: DataService,
-     private nav: NavController,
+    private nav: NavController,
     private navCtrl: NavController,
-    private modalController : ModalController
+    private modalController: ModalController
   ) {
 
 
@@ -45,21 +52,30 @@ export class HomePage {
 
   }
 
-    addNewKid(): void {
-      let modal = this.modalController.create(AddKidModal);
-        modal.present();
-   
-  }
+  addNewKid(): void {
+    let modal = this.modalController.create(AddKidModal);
+    modal.onDidDismiss(data => {
+      this.dataService.getKids()
+        .then((response) => {
 
-    itemSelected(data: Child): void {
-      this.navCtrl.push(ChildInfo, {
-      child: data
-      
+          this.kids = response;
+
+        });
     });
-  
-      console.log(data);
-   
+
+    modal.present();
+
   }
 
-  
+  itemSelected(data: Child): void {
+    this.navCtrl.push(ChildInfo, {
+      child: data
+
+    });
+
+    console.log(data);
+
+  }
+
+
 }

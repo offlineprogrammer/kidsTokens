@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar danger>
     <ion-title>Kids Tokens</ion-title>
     <ion-buttons end>
       <button royal (click)="deleteTask(oTask)">
@@ -31,10 +31,10 @@
         </ion-thumbnail>
       </ion-col>
     </ion-row>
-    <ion-row  *ngIf="oTask.score < oChild.tokenNumbers">
+    <ion-row class="task-comment"  *ngIf="oTask.score < oChild.tokenNumbers">
           <h2>Keep up the good work</h2>
     </ion-row>
-    <ion-row  *ngIf="oTask.score == oChild.tokenNumbers">
+    <ion-row class="task-comment" *ngIf="oTask.score == oChild.tokenNumbers">
           <h2>You did it. Well done !!</h2>
     </ion-row>
     <ion-row >
@@ -45,7 +45,7 @@
       </ion-col>
     </ion-row>
     <div class="task-photo">
-      <img src="images/trythis.png" class="task-background-image">
+      <img src="{{oTask.taskimage}}" class="task-background-image">
     </div>
   </ion-grid>
 </ion-content>

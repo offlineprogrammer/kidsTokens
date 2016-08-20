@@ -1,9 +1,10 @@
 .add-task {
-    .scroll-content {
-        display: flex;
-        // flex-direction: column;
+    ion-label {
+        color: white
     }
 
+    
+    
      .task-background-image {
         background-position: center center;
         background-size: contain;
@@ -16,6 +17,10 @@
             opacity: 0;
             filter: alpha(opacity=0);
         }
+    }
+
+    .item  {
+        border-bottom: none!important;
     }
 
     .task-photo {

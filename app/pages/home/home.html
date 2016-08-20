@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Kids Tokens</ion-title>
+  <ion-navbar danger>
+    <ion-title>Kidz Tokenz</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -9,13 +9,13 @@
 
 <ion-content padding class="home" >
 
-  <h2>Welcome to Kids Tokens!</h2>
+  <h2> To Add Child Tap (+)</h2>
  <ion-grid>
     <ion-row>
       <ion-col>
-    <ion-item *ngFor="let item of kids" (click)="itemSelected(item)">
+    <ion-item  class="child-item" *ngFor="let item of kids" (click)="itemSelected(item)">
       <ion-thumbnail item-left>
-        <img src="{{item.tokenType}}">
+        <img src="{{item.childimage}}">
       </ion-thumbnail>
       <h2>
       {{item.name}}
@@ -24,6 +24,7 @@
     <ion-avatar item-right>
         <img src="{{item.tokenType}}">
       </ion-avatar>
+       <ion-icon name='ios-arrow-forward' item-right ></ion-icon>
     </ion-item>
       </ion-col>
   </ion-row>
@@ -31,6 +32,6 @@
   </ion-grid>
 
 </ion-content>
-<button fab primary large fab-bottom fab-right (click)="addNewKid()" style="z-index:100">
+<button fab danger large fab-bottom fab-right (click)="addNewKid()" style="z-index:100">
     <ion-icon name="add"></ion-icon>
   </button>

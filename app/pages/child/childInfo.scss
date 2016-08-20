@@ -1,7 +1,20 @@
 .childInfo {
-}
+    .task-divider {
+        
+        padding-bottom: 0 !important;
+        margin: 10px 2px 2px 1px;
+        font-weight: bold;
+        color: #FFFFFF;
+        font-size: 16px;
+        border-bottom: none!important;
+        box-shadow: 0 0 1px 1px white;
+    }
 
-   .child-background-image {
+    .item  {
+        border-bottom: none!important;
+    }
+
+    .child-background-image {
         background-position: center center;
         background-size: contain;
         background-repeat: no-repeat;
@@ -15,42 +28,17 @@
         }
     }
 
+
     .child-photo {
-         position: relative;
+        position: relative;
         margin: 0 auto;
-      //  height: 145px;
+        //  height: 145px;
         width: 150px;
-         $max-height: 145px;
-    $max-width: 150px;
-    $padding-top: 10px;
-    $padding-bottom: 5px;
-   // height: $max-height + $padding-top + $padding-bottom;
-    padding: $padding-top 0 $padding-bottom 0;
+        $max-height: 145px;
+        $max-width: 150px;
+        $padding-top: 10px;
+        $padding-bottom: 5px;
+        // height: $max-height + $padding-top + $padding-bottom;
+        padding: $padding-top 0 $padding-bottom 0;
     }
-
-
-.kidstokens-action-sheet  {
-  box-shadow: none;
-  border-color: #d1d3d6;
-  color: #007aff;
-  background: #e4e5e7; }
-
-
-  .action-sheets-basic-page {
-    color: #007aff;
-  .ion-md-share {
-    color: #ED4248;
-  }
-  .ion-md-arrow-dropright-circle {
-    color: #508AE4;
-  }
-  .ion-md-heart-outline {
-    color: #31D55F;
-  }
-  .action-sheet-cancel ion-icon,
-  .action-sheet-destructive ion-icon {
-    color: #757575;
-  }
 }
-
-

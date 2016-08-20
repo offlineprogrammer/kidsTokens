@@ -71,6 +71,7 @@ export class ChildInfo {
 
 
     private updateData(): void {
+      this.oChild.srcTokenNumbers = 'images/' + this.oChild.tokenNumbers + '.png',
         this.dataService.updateKids()
             .then(() => {});
     }
