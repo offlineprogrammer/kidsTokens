@@ -26,6 +26,14 @@ import {
 import {
     Child
 } from '../../models/child';
+import {
+  GAService
+} from '../../services/googleAnalyticsService';
+import {
+    GAEvent
+} from '../../models/gaEvent';
+
+
 
 
 @Component({
@@ -43,6 +51,7 @@ export class AddKidModal {
 
     constructor(private viewController: ViewController,
         private dataService: DataService,
+        private gaService: GAService,
         private nav: NavController,
         navParams: NavParams) {
 
@@ -50,6 +59,7 @@ export class AddKidModal {
         this.form = new FormGroup({
             kidName: new FormControl('', Validators.required)
         });
+        this.gaService.trackView('CreatKidModal');
 
 
     }
@@ -123,6 +133,15 @@ export class AddKidModal {
             this.dataService.addKid(newkid)
                 .then(() => {
                     this.dataService.updateKids();
+                    let oGAEvent: GAEvent;
+                    oGAEvent = {
+                        category: 'Child',
+                        action: 'AddChild',
+                        label: newkid.tokenType,
+                        value: newkid.tokenNumbers,
+                    };
+
+                    this.gaService.trackEvent(oGAEvent);
 
                     this.close();
 

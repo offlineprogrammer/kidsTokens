@@ -20,6 +20,10 @@ import {
 import {
   ChildInfo
 } from '../child/ChildInfo';
+import {
+  GAService
+} from '../../services/googleAnalyticsService';
+
 
 
 
@@ -33,6 +37,7 @@ export class HomePage {
 
   constructor(
     private dataService: DataService,
+    private gaService: GAService,
     private nav: NavController,
     private navCtrl: NavController,
     private modalController: ModalController
@@ -46,7 +51,7 @@ export class HomePage {
 
       });
 
-
+      this.gaService.trackView('HomePage');
 
 
 

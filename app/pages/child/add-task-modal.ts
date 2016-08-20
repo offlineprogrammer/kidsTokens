@@ -17,6 +17,12 @@ import {
     Task
 } from '../../models/task';
 import { Child }                       from '../../models/child';
+import {
+  GAService
+} from '../../services/googleAnalyticsService';
+import {
+    GAEvent
+} from '../../models/gaEvent';
 
 
 @Component({
@@ -31,12 +37,14 @@ export class AddTaskModal {
     
     constructor(private viewController: ViewController,
         private dataService: DataService,
+        private gaService: GAService,
         private nav: NavController,
         navParams: NavParams) {
         this.oChild = navParams.get('child');
         this.form = new FormGroup({
             taskName: new FormControl('', Validators.required)
         });
+        this.gaService.trackView('AddTaskModal');
 
 
     }
@@ -105,6 +113,14 @@ export class AddTaskModal {
              this.oChild.tasks.push(newtask);
         this.dataService.updateKids()
             .then(() => {
+                let oGAEvent: GAEvent;
+                    oGAEvent = {
+                        category: 'Task',
+                        action: 'AddTask',
+                        label: newtask.name,
+                        value: 0
+                    };
+                    this.gaService.trackEvent(oGAEvent);
                     this.close();
             }); };
 

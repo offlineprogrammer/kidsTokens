@@ -11,36 +11,63 @@ import {
 import {
     Observable
 } from 'rxjs/Observable';
-
+import {
+    GoogleAnalytics
+} from 'ionic-native';
+import {
+    GAEvent
+} from '../models/gaEvent';
 
 import 'rxjs/Rx';
 
 
+
 @Injectable()
-export class DataService {
-  
+export class GAService {
+
 
     constructor(
         private http: Http,
         private platform: Platform
     ) {
         this.platform.ready().then(() => {
-            let options: any;
+            try {
+                 GoogleAnalytics.debugMode();
+             GoogleAnalytics.startTrackerWithId('UA-70035565-4');
 
-            
-        });
+             GoogleAnalytics.enableUncaughtExceptionReporting(true)
+                 .then((_success) => {
+                     console.log(_success);
+                 }).catch((_error) => {
+                     console.log(_error);
+                 });
+
+            } catch (error) {
+                 console.log(error);
+            }
+            });
+    }
+
+trackView(data: any): any {
+        this.platform.ready().then(() => {
+      GoogleAnalytics.trackView(data);
+    });
+    }
+
+trackEvent(data: GAEvent): any {
+        this.platform.ready().then(() => {
+      GoogleAnalytics.trackEvent(data.category, data.action, data.label, data.value);
+    });
     }
 
 
-   
 
- 
 
- 
 
- 
 
- 
 
-   
+
+
+
+
 }

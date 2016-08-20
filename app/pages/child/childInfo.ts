@@ -17,6 +17,10 @@ import { AddTaskModal }                                  from './add-task-modal'
 import {
   TaskInfo
 } from '../task/TaskInfo';
+import {
+  GAService
+} from '../../services/googleAnalyticsService';
+
 
 
 
@@ -29,6 +33,7 @@ export class ChildInfo {
  
   constructor(
     private dataService: DataService,
+    private gaService: GAService,
      private nav: NavController,
     private navCtrl: NavController,
     private navParams: NavParams,
@@ -36,6 +41,7 @@ export class ChildInfo {
     private modalController : ModalController
   ) {
    this.oChild = navParams.get('child');
+   this.gaService.trackView('ChildInfo');
    
   }
 

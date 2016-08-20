@@ -13,6 +13,12 @@ import {
 
 import { Child }                       from '../../models/child';
 import { Task }                       from '../../models/task';
+import {
+  GAService
+} from '../../services/googleAnalyticsService';
+import {
+    GAEvent
+} from '../../models/gaEvent';
 
 
 @Component({
@@ -27,6 +33,7 @@ export class TaskInfo {
  
   constructor(
     private dataService: DataService,
+    private gaService: GAService,
      private nav: NavController,
     private navCtrl: NavController,
     private navParams: NavParams,
@@ -34,17 +41,17 @@ export class TaskInfo {
   ) {
    this.oTask = navParams.get('task');
    this.oChild = navParams.get('child');
-   //this.tokenNumbers = Array(+this.oChild.tokenNumbers).fill(1);
-   this.tokenNumbers = this.fillArrayWithNumbers(+this.oChild.tokenNumbers);//Array(+this.oChild.tokenNumbers).map(function (x, i) { return i });
+   this.tokenNumbers = this.fillArrayWithNumbers(+this.oChild.tokenNumbers); 
    this.tokenstriples = this.getTriples();
+   this.gaService.trackView('TaskInfo');
    
   }
 
 
-fillArrayWithNumbers(n:number) {
+fillArrayWithNumbers(n: number) {
     let nArray = [];
     nArray =  Array.apply(null, Array(n));
-    return nArray.map(function (x, i) { return i });
+    return nArray.map(function (x, i) { return i; });
 }
 
   getTriples() {
@@ -64,7 +71,16 @@ fillArrayWithNumbers(n:number) {
 
     private updateData(): void {
         this.dataService.updateKids()
-            .then(() => {});
+            .then(() => {
+              let oGAEvent: GAEvent;
+                    oGAEvent = {
+                        category: 'Task',
+                        action: 'UpdateScore',
+                        label: this.oTask.name,
+                        value: this.oTask.score
+                    };
+                    this.gaService.trackEvent(oGAEvent);
+            });
     }
 
     addToken(): void {
