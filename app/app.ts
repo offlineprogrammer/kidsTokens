@@ -12,6 +12,7 @@ import {
   SQLite,
   GoogleAnalytics
 } from 'ionic-native';
+import {Splashscreen} from 'ionic-native';
 import {
   HomePage
 } from './pages/home/home';
@@ -41,10 +42,18 @@ export class KidsToken {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
+      this.hideSplashScreen();
       this.openPage(this.homePage);
     });
   }
 
+hideSplashScreen() {
+    if (Splashscreen) {
+        setTimeout(() => {
+            Splashscreen.hide();
+        }, 100);
+    }
+}
 
   openPage(page): void {
     this.nav.setRoot(page);
