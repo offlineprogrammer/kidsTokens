@@ -18,7 +18,8 @@ import {
     Alert,
     NavParams,
     ViewController,
-    NavController
+    NavController,
+    ModalController
 } from 'ionic-angular';
 import {
     DataService
@@ -32,6 +33,11 @@ import {
 import {
     GAEvent
 } from '../../models/gaEvent';
+
+import {
+  TokentypePage
+} from '../tokentype/tokentype';
+
 
 
 
@@ -53,6 +59,7 @@ export class AddKidModal {
         private dataService: DataService,
         private gaService: GAService,
         private nav: NavController,
+        private modalController: ModalController,
         navParams: NavParams) {
 
 
@@ -63,6 +70,21 @@ export class AddKidModal {
 
 
     }
+
+    selectToken() {
+        let modal = this.modalController.create(TokentypePage);
+   /* modal.onDidDismiss(data => {
+      this.dataService.getKids()
+        .then((response) => {
+
+          this.kids = response;
+
+        });
+    });*/
+
+    modal.present();
+    }
+
 
     takePhoto() {
         Camera.getPicture({
