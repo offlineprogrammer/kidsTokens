@@ -33,7 +33,7 @@ export class GAService {
         this.platform.ready().then(() => {
             try {
                  GoogleAnalytics.debugMode();
-             GoogleAnalytics.startTrackerWithId('UA-70035565-4');
+             GoogleAnalytics.startTrackerWithId('UA-70035565-4-666');
 
              GoogleAnalytics.enableUncaughtExceptionReporting(true)
                  .then((_success) => {
