@@ -73,14 +73,9 @@ export class AddKidModal {
 
     selectToken() {
         let modal = this.modalController.create(TokentypePage, {selectedToken: this.tokenType});
-   /* modal.onDidDismiss(data => {
-      this.dataService.getKids()
-        .then((response) => {
-
-          this.kids = response;
-
-        });
-    });*/
+    modal.onDidDismiss(data => {
+     this.tokenType = data.selectedToken;
+    });
 
     modal.present();
     }

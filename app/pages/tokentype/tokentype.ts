@@ -17,7 +17,7 @@ export class TokentypePage {
 
 
     dismiss() {
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss( {selectedToken: this.selectedToken});
   }
 
 }
