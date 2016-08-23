@@ -5,29 +5,28 @@
     </ion-title>
     <ion-buttons start>
       <button (click)="dismiss()">
-        <span primary showWhen="ios">Cancel</span>
-        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+        <ion-icon name="md-close" ></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list radio-group>
-    <ion-item>
+<ion-content class="tokentype">
+  <ion-list radio-group [(ngModel)]="selectedToken">
+    <ion-item class="child-item">
       <ion-avatar item-left>
         <img src="images/star.png">
       </ion-avatar>
       <ion-label>Shiny Star</ion-label>
-      <ion-radio checked="true" value="go"></ion-radio>
+      <ion-radio  value="images/star.png"></ion-radio>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="child-item">
       <ion-avatar item-left>
         <img src="images/face.png">
       </ion-avatar>
       <ion-label>Smiley Face</ion-label>
-       <ion-radio value="rust"></ion-radio>
+       <ion-radio  value="images/face.png"></ion-radio>
     </ion-item>
 
   </ion-list>

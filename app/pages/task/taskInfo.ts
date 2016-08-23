@@ -62,9 +62,8 @@ export class TaskInfo {
         NativeAudio.preloadSimple('win', 'images/win.mp3').then(function(msg) {
             console.log(msg);
           }, function(error) {
-            alert(error);
+            console.log(error);
           });
-         this.playSound('win');
      });
     
      
@@ -106,6 +105,9 @@ export class TaskInfo {
           value: this.oTask.score
         };
         this.gaService.trackEvent(oGAEvent);
+        if (this.oTask.score === this.oChild.tokenNumbers) {
+          this.playSound('win');
+        }
         
       });
   }
@@ -119,7 +121,7 @@ export class TaskInfo {
      NativeAudio.play(key, function(key) {}).then(function(msg) {
             console.log(msg);
           }, function(error) {
-            alert(error);
+            console.log(error);
           });
     
   }
