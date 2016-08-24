@@ -38,6 +38,10 @@ import {
   TokentypePage
 } from '../tokentype/tokentype';
 
+import {
+  TokenNumbersPage
+} from '../token-numbers/token-numbers';
+
 
 
 
@@ -49,6 +53,7 @@ export class AddKidModal {
     rootParams: any;
     form;
     tokenType: string = 'images/star.png';
+    srcTokenNumbers: string = 'images/5.png';
     tokenNumbers: number = 5;
     base64Image: string;
 
@@ -75,6 +80,16 @@ export class AddKidModal {
         let modal = this.modalController.create(TokentypePage, {selectedToken: this.tokenType});
     modal.onDidDismiss(data => {
      this.tokenType = data.selectedToken;
+    });
+
+    modal.present();
+    }
+
+    selectTokenNumbers() {
+        let modal = this.modalController.create(TokenNumbersPage, {tokenNumbers: this.srcTokenNumbers});
+    modal.onDidDismiss(data => {
+     this.tokenNumbers = data.tokenNumbers;
+     this.srcTokenNumbers = 'images/' + this.tokenNumbers + '.png';
     });
 
     modal.present();

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar danger>
+    <ion-title>
+      Token Numbers
+    </ion-title>
+    <ion-buttons start>
+      <button (click)="dismiss()">
+        <ion-icon name="md-close" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="token-numbers">
+  <ion-list radio-group [(ngModel)]="tokenNumbers">
+    <ion-item class="child-item" *ngFor="let item of tokenNumbersArray">
+       <ion-thumbnail item-left>
+        <img src="{{item}}">
+      </ion-thumbnail>
+      <ion-radio value="{{item}}"></ion-radio>
+    </ion-item>
+ </ion-list>
+
+</ion-content>

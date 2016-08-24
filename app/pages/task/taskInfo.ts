@@ -97,6 +97,9 @@ export class TaskInfo {
   private updateData(): void {
     this.dataService.updateKids()
       .then(() => {
+        if (this.oTask.score === this.oChild.tokenNumbers) {
+          this.playSound('win');
+        }
         let oGAEvent: GAEvent;
         oGAEvent = {
           category: 'Task',
@@ -105,9 +108,7 @@ export class TaskInfo {
           value: this.oTask.score
         };
         this.gaService.trackEvent(oGAEvent);
-        if (this.oTask.score === this.oChild.tokenNumbers) {
-          this.playSound('win');
-        }
+        
         
       });
   }
