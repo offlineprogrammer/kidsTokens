@@ -150,18 +150,23 @@ export class DataService {
         });
     }
 
-    setProfile(data: any): void {
-        this.saveData(data, this.KIDS_KEY);
-    }
+    getTokenTypes(): string[]{
+        let tokenTypes: any = ['images/star.png',
+                               'images/face.png',
+                               'images/bunny.png',
+                               'images/giraffe.png',
+                               'images/leopard.png',
+                               'images/monkey.png',
+                               'images/monkeytoy.png',
+                               'images/rocket.png',
+                               'images/Sheep.png',
+                               'images/teddybear.png',
+                               'images/train.png',
+                               'images/triceratops.png',
+                                ];
+        return tokenTypes;                                
 
-    getLocation(): Promise < any > {
-        return this.storage.get(this.LOCATION_KEY);
     }
-
-    setLocation(data: any): void {
-        this.saveData(data, this.LOCATION_KEY);
-    }
-
 
 
     private saveData(data: any, key: string) {
