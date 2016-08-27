@@ -20,6 +20,13 @@ import {
 import {
   GAService
 } from '../../services/googleAnalyticsService';
+import {
+  TokentypePage
+} from '../tokentype/tokentype';
+import {
+  TokenNumbersPage
+} from '../token-numbers/token-numbers';
+
 
 
 
@@ -45,35 +52,18 @@ export class ChildInfo {
    
   }
 
-     changeToken(): void {
-     
-     let actionSheet = this.actionSheetController.create({
-      title: 'Change Token Type',
-      cssClass: 'action-sheets-basic-page' ,
-      buttons: [
-        {
-          text: 'Star',
-          
-           //icon: 'images/star.png',
-          handler: () => {
-            this.oChild.tokenType = 'images/star.png';
-            this.updateData();
-           
-          }
-        }, {
-          text: 'Smiley Face',
-          
-          handler: () => {
-            this.oChild.tokenType = 'images/face.png';
-             this.updateData();
-            
-          }
-        }
-      ]
+   changeToken(): void {
+        let modal = this.modalController.create(TokentypePage, {selectedToken: this.oChild.tokenType});
+    modal.onDidDismiss(data => {
+     this.oChild.tokenType = data.selectedToken;
+      this.updateData();
     });
-    actionSheet.present();
+
+    modal.present();
+    }
+
+
    
-  }
 
 
     private updateData(): void {
@@ -82,54 +72,20 @@ export class ChildInfo {
             .then(() => {});
     }
 
-
-
-     changeTokenNumbers(): void {
-     
-     let actionSheet = this.actionSheetController.create({
-      title: 'Change Token Numbers',
-      buttons: [
-        {
-          text: '5',
-          role: '5',
-          handler: () => {
-            this.oChild.tokenNumbers = 5;
-            this.updateData();
-          }
-        }, {
-          text: '4',
-          role: '4',
-          handler: () => {
-            this.oChild.tokenNumbers = 4;
-            this.updateData();
-          }
-        }, {
-          text: '3',
-          role: '3',
-          handler: () => {
-            this.oChild.tokenNumbers = 3;
-            this.updateData();
-          }
-        }, {
-          text: '2',
-          role: '2',
-          handler: () => {
-            this.oChild.tokenNumbers = 2;
-            this.updateData();
-          }
-        }, {
-          text: '1',
-          role: '1',
-          handler: () => {
-            this.oChild.tokenNumbers = 1;
-            this.updateData();
-          }
-        }
-      ]
+    changeTokenNumbers(): void {
+        let modal = this.modalController.create(TokenNumbersPage, {tokenNumbers: this.oChild.srcTokenNumbers});
+    modal.onDidDismiss(data => {
+     this.oChild.tokenNumbers = data.tokenNumbers;
+     this.oChild.srcTokenNumbers = 'images/' + this.oChild.tokenNumbers + '.png';
+     this.updateData();
     });
-    actionSheet.present();
-   
-  }
+
+    modal.present();
+    }
+
+
+
+    
 
 
       addNewTask(data: any): void {
