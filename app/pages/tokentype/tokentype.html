@@ -12,12 +12,13 @@
 </ion-header>
 
 <ion-content class="tokentype">
-  <ion-list radio-group [(ngModel)]="selectedToken">
-    <ion-item class="child-item" *ngFor="let item of tokenTypes">
+  <ion-list>
+    <ion-item class="child-item" *ngFor="let item of tokenTypes" (click)="itemSelected(item)">
         <ion-thumbnail item-left>
         <img src="{{item}}">
        </ion-thumbnail>
-      <ion-radio value="{{item}}"></ion-radio>
+        <ion-icon name='ios-arrow-forward' item-right ></ion-icon>
+     
     </ion-item>
   </ion-list>
 </ion-content>

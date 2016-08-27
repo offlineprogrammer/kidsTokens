@@ -25,6 +25,15 @@ export class TokenNumbersPage {
     });
   }
 
+  itemSelected(data: string): void {
+  let ntokenNumbers = data.match(/\d+/);
+ console.log(ntokenNumbers);
+ console.log(ntokenNumbers[0]);
+   this.viewCtrl.dismiss( {tokenNumbers: ntokenNumbers[0]});
+    
+
+  }
+
    dismiss() {
      
      let ntokenNumbers = this.tokenNumbers.match(/\d+/);

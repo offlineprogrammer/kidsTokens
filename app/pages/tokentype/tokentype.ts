@@ -22,6 +22,12 @@ export class TokentypePage {
 
   }
 
+itemSelected(data: string): void {
+
+   this.viewCtrl.dismiss( {selectedToken: data});
+    
+
+  }
 
     dismiss() {
     this.viewCtrl.dismiss( {selectedToken: this.selectedToken});
