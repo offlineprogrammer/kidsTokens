@@ -13,7 +13,7 @@ export class TokenNumbersPage {
               private navParams: NavParams) {
                 this.tokenNumbers = navParams.get('tokenNumbers');
               //  this.tokenNumbers = 'images/' + this.tokenNumbers + '.png';
-                this.tokenNumbersArray = this.fillArrayWithNumbers(5);
+                this.tokenNumbersArray = this.fillArrayWithNumbers(9);
   }
 
   fillArrayWithNumbers(n: number) {
