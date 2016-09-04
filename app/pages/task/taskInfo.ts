@@ -12,7 +12,9 @@ import {
   Platform
 } from 'ionic-angular';
 
-
+import {
+  SocialSharing
+} from 'ionic-native';
 import {
   DataService
 } from '../../services/data';
@@ -51,22 +53,22 @@ export class TaskInfo {
     private navCtrl: NavController,
     private navParams: NavParams,
     private modalController: ModalController,
-     private platform: Platform
+    private platform: Platform
   ) {
     this.oTask = navParams.get('task');
     this.oChild = navParams.get('child');
     this.tokenNumbers = this.fillArrayWithNumbers(+this.oChild.tokenNumbers);
     this.tokenstriples = this.getTriples();
     this.gaService.trackView('TaskInfo');
-     platform.ready().then(() => {
-        NativeAudio.preloadSimple('win', 'images/win.mp3').then(function(msg) {
-            console.log(msg);
-          }, function(error) {
-            console.log(error);
-          });
-     });
-    
-     
+    platform.ready().then(() => {
+      NativeAudio.preloadSimple('win', 'images/win.mp3').then(function(msg) {
+        console.log(msg);
+      }, function(error) {
+        console.log(error);
+      });
+    });
+
+
 
   }
 
@@ -93,6 +95,21 @@ export class TaskInfo {
     return triples;
   }
 
+  facebookShare() {
+    this.platform.ready().then(() => {
+      let shareMessage = this.oChild.tokenNumbers.toString() + ' tokenz for ' +  this.oChild.name + ' :) time for  ' + this.oTask.name;
+
+      SocialSharing.shareViaFacebook(shareMessage, this.oTask.taskimage , null)
+        .then(() => {
+            
+          },
+          () => {
+            alert('failed');
+          });
+
+    });
+  }
+
 
   private updateData(): void {
     this.dataService.updateKids()
@@ -108,23 +125,23 @@ export class TaskInfo {
           value: this.oTask.score
         };
         this.gaService.trackEvent(oGAEvent);
-        
-        
+
+
       });
   }
 
   private stopSound(key: string): void {
-    
-    
+
+
   }
 
   private playSound(key: string): void {
-     NativeAudio.play(key, function(key) {}).then(function(msg) {
-            console.log(msg);
-          }, function(error) {
-            console.log(error);
-          });
-    
+    NativeAudio.play(key, function(key) {}).then(function(msg) {
+      console.log(msg);
+    }, function(error) {
+      console.log(error);
+    });
+
   }
 
   addToken(): void {
