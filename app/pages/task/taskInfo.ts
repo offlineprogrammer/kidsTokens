@@ -97,7 +97,7 @@ export class TaskInfo {
 
   facebookShare() {
     this.platform.ready().then(() => {
-      let shareMessage = this.oChild.tokenNumbers.toString() + ' tokenz for ' +  this.oChild.name + ' :) time for  ' + this.oTask.name;
+      let shareMessage: string = this.oChild.tokenNumbers.toString() + ' tokenz for ' +  this.oChild.name + ' :) time for  ' + this.oTask.name;
 
       SocialSharing.shareViaFacebook(shareMessage, this.oTask.taskimage , null)
         .then(() => {

@@ -35,8 +35,12 @@
           <h2>Keep up the good work</h2>
     </ion-row>
     <ion-row class="task-comment" *ngIf="oTask.score == oChild.tokenNumbers">
-          <h2>You did it. Well done !!</h2>
-          <button full danger (click)="facebookShare()">Share on Facebook</button>
+          <h2>You did it. Well done !! </h2>
+         
+    </ion-row>
+     <ion-row class="task-comment" *ngIf="oTask.score == oChild.tokenNumbers">
+         
+          <button full primary round large  (click)="facebookShare()"> <ion-icon name="logo-facebook"></ion-icon></button>
     </ion-row>
     <ion-row >
       <ion-col>
