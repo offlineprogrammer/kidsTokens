@@ -45,6 +45,7 @@ export class TaskInfo {
   oTask: Task;
   tokenNumbers: number[];
   tokenstriples: number[];
+  bSocialSharing: boolean = false;
 
   constructor(
     private dataService: DataService,
@@ -65,6 +66,12 @@ export class TaskInfo {
         console.log(msg);
       }, function(error) {
         console.log(error);
+      });
+      SocialSharing.canShareVia('Facebook').then(() => {
+        this.bSocialSharing = true;
+      }).catch(() => {
+        this.bSocialSharing = false;
+        
       });
     });
 
@@ -97,11 +104,11 @@ export class TaskInfo {
 
   facebookShare() {
     this.platform.ready().then(() => {
-      let shareMessage: string = this.oChild.tokenNumbers.toString() + ' tokenz for ' +  this.oChild.name + ' :) time for  ' + this.oTask.name;
+      let shareMessage: string = this.oChild.tokenNumbers.toString() + ' tokenz for ' + this.oChild.name + ' :) time for  ' + this.oTask.name;
 
-      SocialSharing.shareViaFacebook(shareMessage, this.oTask.taskimage , null)
+      SocialSharing.shareViaFacebook(shareMessage, this.oTask.taskimage, null)
         .then(() => {
-            
+
           },
           () => {
             alert('failed');
