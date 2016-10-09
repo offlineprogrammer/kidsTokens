@@ -17,6 +17,9 @@ import {
 import {
     GAEvent
 } from '../models/gaEvent';
+import {
+    GAException
+} from '../models/gaException';
 
 import 'rxjs/Rx';
 
@@ -33,7 +36,7 @@ export class GAService {
         this.platform.ready().then(() => {
             try {
                  GoogleAnalytics.debugMode();
-             GoogleAnalytics.startTrackerWithId('UA-70035565-000');
+             GoogleAnalytics.startTrackerWithId('UA-70035565-4');
 
              GoogleAnalytics.enableUncaughtExceptionReporting(true)
                  .then((_success) => {
@@ -53,6 +56,13 @@ trackView(data: any): any {
       GoogleAnalytics.trackView(data);
     });
     }
+
+trackException(data: GAException): any {
+        this.platform.ready().then(() => {
+      GoogleAnalytics.trackException(data.description, data.isFatal);
+    });
+    }
+
 
 trackEvent(data: GAEvent): any {
         this.platform.ready().then(() => {

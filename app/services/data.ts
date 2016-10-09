@@ -24,6 +24,12 @@ import {
 import {
     Task
 } from '../models/task';
+import {
+    GAException
+} from '../models/gaException';
+import {
+    GAService
+} from '../services/googleAnalyticsService';
 
 @Injectable()
 export class DataService {
@@ -31,13 +37,13 @@ export class DataService {
 
     private DB_NAME: string = 'kidsToken.db';
     private KIDS_KEY: string = 'kids';
-    
-    private LOCATION_KEY: string = 'location';
+
     Kids: Child[] = [];
 
     constructor(
         private http: Http,
-        private platform: Platform
+        private platform: Platform,
+        private gaService: GAService
     ) {
         this.platform.ready().then(() => {
             let options: any;
@@ -66,13 +72,25 @@ export class DataService {
                 this.Kids = [];
 
             }
-            
+
             this.saveData(this.Kids, this.KIDS_KEY);
             resolve('Done');
 
         }).catch((error) => {
+            this.logError(error);
             // reject('Only available on a device');
         });
+    }
+
+    private logError(data: any) {
+        let oGAException: GAException;
+        oGAException = {
+            description: data,
+            isFatal: false
+
+        };
+        this.gaService.trackException(oGAException);
+
     }
 
     addTask(data: Task): Promise < any > {
@@ -92,21 +110,21 @@ export class DataService {
     }
 
     deleteKid(data: Child): Promise < any > {
-        
+
         return new Promise((resolve, reject) => {
             if (typeof this.Kids === 'undefined') {
                 this.Kids = [];
 
             }
-             let index =  this.Kids.indexOf(data);
- 
-        if (index > -1) {
-             this.Kids.splice(index, 1);
-        }
+            let index = this.Kids.indexOf(data);
+
+            if (index > -1) {
+                this.Kids.splice(index, 1);
+            }
 
 
 
-           
+
             this.saveData(this.Kids, this.KIDS_KEY);
             resolve('Done');
 
@@ -150,21 +168,20 @@ export class DataService {
         });
     }
 
-    getTokenTypes(): string[]{
+    getTokenTypes(): string[] {
         let tokenTypes: any = ['images/star.png',
-                               'images/face.png',
-                               'images/bunny.png',
-                               'images/giraffe.png',
-                               'images/leopard.png',
-                               'images/monkey.png',
-                               'images/monkeytoy.png',
-                               'images/rocket.png',
-                               'images/Sheep.png',
-                               'images/teddybear.png',
-                               'images/train.png',
-                               'images/triceratops.png',
-                                ];
-        return tokenTypes;                                
+            'images/face.png',
+            'images/giraffe.png',
+            'images/leopard.png',
+            'images/monkey.png',
+            'images/monkeytoy.png',
+            'images/rocket.png',
+            'images/Sheep.png',
+            'images/teddybear.png',
+            'images/train.png',
+            'images/triceratops.png',
+        ];
+        return tokenTypes;
 
     }
 

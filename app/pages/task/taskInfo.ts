@@ -34,6 +34,10 @@ import {
 import {
   NativeAudio
 } from 'ionic-native';
+import {
+    GAException
+} from '../../models/gaException';
+import {Screenshot} from 'ionic-native';
 
 
 @Component({
@@ -46,6 +50,7 @@ export class TaskInfo {
   tokenNumbers: number[];
   tokenstriples: number[];
   bSocialSharing: boolean = false;
+  sTaskscreen: string;
 
   constructor(
     private dataService: DataService,
@@ -68,9 +73,11 @@ export class TaskInfo {
         console.log(error);
       });
       SocialSharing.canShareVia('Facebook').then(() => {
+       console.log('ok facebook');
         this.bSocialSharing = true;
       }).catch(() => {
-        this.bSocialSharing = false;
+        console.log('error facebook');
+        this.bSocialSharing = true;
         
       });
     });
@@ -78,6 +85,17 @@ export class TaskInfo {
 
 
   }
+
+  private logError(data: any) {
+        let oGAException: GAException;
+        oGAException = {
+            description: data,
+            isFatal: false
+
+        };
+        this.gaService.trackException(oGAException);
+
+    }
 
 
   fillArrayWithNumbers(n: number) {
@@ -104,15 +122,40 @@ export class TaskInfo {
 
   facebookShare() {
     this.platform.ready().then(() => {
+      let oGAEvent: GAEvent;
+        oGAEvent = {
+          category: 'Task',
+          action: 'facebookShare',
+          label: this.oTask.name,
+          value: this.oChild.tokenNumbers
+        };
+        this.gaService.trackEvent(oGAEvent);
+
+
       let shareMessage: string = this.oChild.tokenNumbers.toString() + ' tokenz for ' + this.oChild.name + ' :) time for  ' + this.oTask.name;
 
-      SocialSharing.shareViaFacebook(shareMessage, this.oTask.taskimage, null)
+      Screenshot.URI(80)
+        .then((res) => {
+            console.log(res); 
+            this.sTaskscreen = res.URI;
+
+             SocialSharing.shareViaFacebook(shareMessage, this.sTaskscreen, null)
         .then(() => {
+         
+          },
+          () => {
+            this.logError('Facebook Sharing Failed');
+            
+          });
+
 
           },
           () => {
-            alert('failed');
+            this.logError('Screenshot capture Failed');
           });
+
+
+     
 
     });
   }

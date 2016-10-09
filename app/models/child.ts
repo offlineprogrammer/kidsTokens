@@ -8,6 +8,6 @@ export class Child {
     tokenNumbers: number;
     srcTokenNumbers: string;    
     isActive: boolean;
-    tasks:Task[];
+    tasks: Task[];
    
 }
